@@ -1,14 +1,17 @@
 define([
     'libs/ember',
     'app/views/item-view',
+    'app/views/new-item-view',
     'plugins/text!app/templates/main.handlebars'
-], function(Em, itemView, mainTemplate) {
-    console.log(itemView.create());
-
+], function(Em, itemView, newItemView, mainTemplate) {
     return Em.View.extend({
         template: Em.Handlebars.compile(mainTemplate),
 
-        ItemView: itemView.create(),
+        ItemView: itemView.extend({}),
+
+        NewItemView: newItemView.extend({
+            items: this.items
+        }),
 
         items: [
             {
@@ -20,7 +23,7 @@ define([
         ],
 
         mouseDown: function() {
-            window.alert("hello world!");
+            console.log("hello world!");
         }
     });
 });

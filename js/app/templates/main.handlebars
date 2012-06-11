@@ -1,9 +1,9 @@
 <h1>Main view rendered</h1>
 
-{{view ItemView}}
+{{view NewItemView}}
 
 <ul>
     {{#each items}}
-        <li>{{this.name}}</span>
+        {{view view.ItemView contentBinding="this"}}
     {{/each}}
 </ul>
